@@ -1,5 +1,8 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:love_app/home/HomeListView.dart';
+import 'package:love_app/util/screen.dart';
 
 class HomeScene extends StatefulWidget {
   @override
@@ -11,12 +14,14 @@ class HomeScene extends StatefulWidget {
 }
 
 class HomeSceneState extends State<HomeScene> {
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      body: Text("1111"),
+      body: HomeListView(),
     );
   }
+
 
 }
