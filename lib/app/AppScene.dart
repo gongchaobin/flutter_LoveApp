@@ -13,6 +13,7 @@ class AppScene extends StatelessWidget {
     return MaterialApp(
       title: "LoveApp",
       navigatorObservers: [routeObserver],
+
       theme: ThemeData(
         primaryColor: Colors.white,
         dividerColor: Color(0xFFEEEEEE),
@@ -21,6 +22,7 @@ class AppScene extends StatelessWidget {
           body1: TextStyle(color: AppColor.darkGrey)
         ),
       ),
+
       home: RootScene(),
     );
   }

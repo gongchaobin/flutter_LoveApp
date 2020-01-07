@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:love_app/app/AppColor.dart';
+import 'package:love_app/home/HomeScene.dart';
+import 'package:love_app/my/MyScene.dart';
 
 class RootScene extends StatefulWidget {
 
@@ -29,6 +31,7 @@ class _RootSceneState extends State<RootScene> {
     Image.asset('images/tab_my.png'),
     Image.asset('images/tab_my.png'),
   ];
+
   List<Image> _tabSelectedImages = [
     Image.asset('images/tab_home_selected.png'),
     Image.asset('images/tab_home_selected.png'),
@@ -46,29 +49,40 @@ class _RootSceneState extends State<RootScene> {
     // TODO: implement build
     return Scaffold(
       body: IndexedStack(
-        // 中间显示区域
+        children: <Widget>[
+          HomeScene(),
+          HomeScene(),
+          HomeScene(),
+          HomeScene(),
+          MyScene()
+        ],
       ),
       bottomNavigationBar:CupertinoTabBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: getTabIcon(0),
+            icon: _tabImages[0],
+            activeIcon: _tabSelectedImages[0],
             title: Text(menus[0])
           ),
           BottomNavigationBarItem(
-            icon: getTabIcon(1),
+            icon: _tabImages[1],
+            activeIcon: _tabSelectedImages[1],
             title: Text(menus[1])
           ),
           BottomNavigationBarItem(
-              icon: getTabIcon(2),
-              title: Text(menus[2])
+            icon: _tabImages[2],
+            activeIcon: _tabSelectedImages[2],
+            title: Text(menus[2])
           ),
           BottomNavigationBarItem(
-              icon: getTabIcon(3),
-              title: Text(menus[3])
+            icon: _tabImages[3],
+            activeIcon: _tabSelectedImages[3],
+            title: Text(menus[3])
           ),
           BottomNavigationBarItem(
-              icon: getTabIcon(4),
-              title: Text(menus[4])
+            icon: _tabImages[4],
+            activeIcon: _tabSelectedImages[4],
+            title: Text(menus[4])
           ),
         ],
         onTap: (tabIndex) {
@@ -82,14 +96,6 @@ class _RootSceneState extends State<RootScene> {
         border: Border(top: BorderSide.none),
       ),
     );
-  }
-
-  Image getTabIcon(int index) {
-    if(index == tabIndex) {
-      return _tabSelectedImages[index];
-    } else {
-      return _tabImages[index];
-    }
   }
 
 
