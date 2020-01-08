@@ -54,7 +54,7 @@ class _RootSceneState extends State<RootScene> {
           HomeScene(),
           HomeScene(),
           HomeScene(),
-          MyScene()
+          MyScene(),
         ],
         index: tabIndex,
       ),
