@@ -56,6 +56,7 @@ class _RootSceneState extends State<RootScene> {
           HomeScene(),
           MyScene()
         ],
+        index: tabIndex,
       ),
       bottomNavigationBar:CupertinoTabBar(
         items: <BottomNavigationBarItem>[
