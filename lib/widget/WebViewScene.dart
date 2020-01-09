@@ -1,16 +1,21 @@
 
 
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:love_app/util/screen.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+// ignore: must_be_immutable
 class WebViewScene extends StatefulWidget {
   final String url;
   final String title;
+  bool isShowBack = false; // 是否显示左边back按钮
+  bool isShowShare = false; // 是否显示右边分享按钮
 
-  WebViewScene({@required this.url, this.title});
+  WebViewScene({@required this.url, @required this.title,@required this.isShowBack, @required this.isShowShare});
 
 
   _WebViewSceneState createState() => _WebViewSceneState();
@@ -37,16 +42,22 @@ class _WebViewSceneState extends State<WebViewScene> {
       appBar: AppBar(
         title: Text(this.widget.title ?? ''),
         elevation: 0,
+        centerTitle: true,
         leading: GestureDetector(
           onTap: back,
-          child: Image.asset('images/icon_arrow_back_black.png'),
+          child: Offstage(
+            child: Image.asset('images/icon_arrow_back_black.png'),
+            offstage: this.widget.isShowBack == null ? false : true,
+          ),
         ),
         actions: <Widget>[
           GestureDetector(
             onTap: () {
-
             },
-            child: Image.asset('images/icon_menu_share.png'),
+            child: Offstage(
+                child: Image.asset('images/icon_menu_share.png'),
+                offstage: this.widget.isShowShare == null ? false : true,
+            ),
           ),
         ],
       ),

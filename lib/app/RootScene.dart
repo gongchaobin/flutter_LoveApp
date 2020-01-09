@@ -5,6 +5,7 @@ import 'package:love_app/chat/ChatCaseSence.dart';
 import 'package:love_app/home/HomeScene.dart';
 import 'package:love_app/my/MyScene.dart';
 import 'package:love_app/show/ShowScene.dart';
+import 'package:love_app/widget/WebViewScene.dart';
 
 class RootScene extends StatefulWidget {
 
@@ -55,7 +56,7 @@ class _RootSceneState extends State<RootScene> {
           HomeScene(),
           ChatCaseSence(),
           ShowScene(),
-          HomeScene(),
+          WebViewScene(url: "http://www.baidu.com", title: "课程",isShowBack: false,isShowShare: false,),
           MyScene(),
         ],
         index: tabIndex,

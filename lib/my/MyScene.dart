@@ -28,6 +28,7 @@ class MySceneState extends State<MySceneWidget> {
           ),
           ),
         backgroundColor: Colors.white,
+        elevation: 0,
         // brightness: Brightness.dark,
       ),
       body: Column(
