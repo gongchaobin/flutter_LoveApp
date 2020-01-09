@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:love_app/app/AppColor.dart';
-import 'package:love_app/community/ChatCaseSence.dart';
+import 'package:love_app/community/CommunitySence.dart';
 import 'package:love_app/found/ShowScene.dart';
 import 'package:love_app/home/HomeScene.dart';
 import 'package:love_app/my/MyScene.dart';
@@ -54,7 +54,7 @@ class _RootSceneState extends State<RootScene> {
       body: IndexedStack(
         children: <Widget>[
           HomeScene(), // 主页
-          ChatCaseSence(), // 社区
+          CommunitySence(), // 社区
           ShowScene(), // 发现
           MyScene(), // 我的
         ],

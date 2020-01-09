@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:love_app/community/ChatListView.dart';
+import 'package:love_app/community/CommunityListView.dart';
 
 class ShowScene extends StatelessWidget {
 
@@ -16,7 +16,7 @@ class ShowScene extends StatelessWidget {
         centerTitle: true,
         elevation: 0,
       ),
-      body: ChatListView(),
+      body: CommunityListView(),
     );
   }
 

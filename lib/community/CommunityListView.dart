@@ -3,16 +3,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:love_app/app/AppColor.dart';
 
-class ChatListView extends StatefulWidget {
+class CommunityListView extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return ChatListViewState();
+    return CommunityListViewState();
   }
 
 }
 
-class ChatListViewState extends State<ChatListView> {
+class CommunityListViewState extends State<CommunityListView> {
 
   var datas;
 
