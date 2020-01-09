@@ -1,16 +1,16 @@
 
-
 import 'package:flutter/material.dart';
-import 'package:love_app/chat/ChatListView.dart';
+import 'package:love_app/community/ChatListView.dart';
 
-class ChatCaseSence extends StatelessWidget {
+class ShowScene extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "聊天实战",
+          "展示面",
           style: TextStyle(fontSize: 16),
         ),
         centerTitle: true,
@@ -19,4 +19,5 @@ class ChatCaseSence extends StatelessWidget {
       body: ChatListView(),
     );
   }
+
 }
