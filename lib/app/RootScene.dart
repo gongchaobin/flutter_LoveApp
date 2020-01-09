@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:love_app/app/AppColor.dart';
+import 'package:love_app/chat/ChatCaseSence.dart';
 import 'package:love_app/home/HomeScene.dart';
 import 'package:love_app/my/MyScene.dart';
+import 'package:love_app/show/ShowScene.dart';
 
 class RootScene extends StatefulWidget {
 
@@ -51,8 +53,8 @@ class _RootSceneState extends State<RootScene> {
       body: IndexedStack(
         children: <Widget>[
           HomeScene(),
-          HomeScene(),
-          HomeScene(),
+          ChatCaseSence(),
+          ShowScene(),
           HomeScene(),
           MyScene(),
         ],
