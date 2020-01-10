@@ -1,6 +1,4 @@
 
-import 'dart:ffi';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:love_app/app/ApiClient.dart';
@@ -58,18 +56,11 @@ class HomeListViewState extends State<HomeListView> {
   Future<void> fetchData() async {
     ApiClient client = new ApiClient();
     List<MovieNews> news = await client.getNewsList();
-    var nowPlayingData = await client.getNowPlayingList(start: 0, count: 6);
-    var comingListData = await client.getComingList(start: 0, count: 6);
 
     setState(() {
       newsList =news2Banner(news);
-//      comingList = MovieDataUtil.getMovieList(comingListData);
-//      nowPlayingList = MovieDataUtil.getMovieList(nowPlayingData);
-      // classifyMovieList = classifyMovies;
-      // classifyMovieTags = tags;
     });
   }
-
 
   List<NewsBanner> news2Banner(var list) {
     List content = list;
@@ -79,8 +70,6 @@ class HomeListViewState extends State<HomeListView> {
     });
     return banners;
   }
-
-
 
 
 }
