@@ -27,7 +27,7 @@ dependencies:
   carousel_slider: ^1.4.0
   html: ^0.14.0+3
   http: ^0.12.0+4
-  webview_flutter: ^0.3.19+3
+  webview_flutter: 0.3.18+1
   cached_network_image: ^2.0.0
 
 dev_dependencies:
@@ -48,6 +48,7 @@ flutter:
 
   assets:
     - images/
+    - images/mine/
 
   # To add assets to your application, add an assets section, like this:
   # assets:
