@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:love_app/app/ApiClient.dart';
 import 'package:love_app/app/AppColor.dart';
 import 'package:love_app/home/HomeBannerView.dart';
-import 'package:love_app/home/HomeSectionView.dart';
+import 'package:love_app/home/HomeItemView.dart';
 import 'package:love_app/model/MovieNews.dart';
 
 class HomeListView extends StatefulWidget {
@@ -45,7 +45,8 @@ class HomeListViewState extends State<HomeListView> {
             cacheExtent: 10000,
             addAutomaticKeepAlives: true,
             children: <Widget>[
-              HomeSectionView(),
+              HomeItemView(),
+
             ],
           ),
         ),

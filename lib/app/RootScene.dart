@@ -27,17 +27,17 @@ class _RootSceneState extends State<RootScene> {
 
   // 定义 tab icon
   List<Image> _tabImages = [
-    Image.asset('images/tab_home.png',width: 24,height: 24,),
-    Image.asset('images/tab_community.png',width: 24,height: 24,),
-    Image.asset('images/tab_found.png',width: 24,height: 24,),
-    Image.asset('images/tab_my.png',width: 24,height: 24,),
-  ];
-
-  List<Image> _tabSelectedImages = [
     Image.asset('images/tab_home_selected.png',width: 24,height: 24,),
     Image.asset('images/tab_community_selected.png',width: 24,height: 24,),
     Image.asset('images/tab_found_selected.png',width: 24,height: 24,),
     Image.asset('images/tab_my_selected.png',width: 24,height: 24,),
+  ];
+
+  List<Image> _tabSelectedImages = [
+    Image.asset('images/tab_home.png',width: 24,height: 24,),
+    Image.asset('images/tab_community.png',width: 24,height: 24,),
+    Image.asset('images/tab_found.png',width: 24,height: 24,),
+    Image.asset('images/tab_my.png',width: 24,height: 24,),
   ];
 
   List<String> menus = [
