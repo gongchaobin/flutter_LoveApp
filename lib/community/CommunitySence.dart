@@ -1,5 +1,7 @@
 
 
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:love_app/app/AppColor.dart';
 import 'package:love_app/community/CommunityListView.dart';
@@ -17,6 +19,12 @@ class CommunitySence extends StatelessWidget {
         width: Screen.width,
         height: Screen.height,
         child: CommunityListView(),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+
+        },
+        child: Image.asset('images/icon_publish.png',width: 56,height: 56,),
       ),
     );
   }
