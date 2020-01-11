@@ -1,5 +1,5 @@
 
-import 'package:flutter/foundation.dart';
+import 'package:love_app/login/LoginScene.dart';
 import 'package:flutter/material.dart';
 
 
@@ -11,7 +11,7 @@ class MyScene extends StatefulWidget {
 }
 
 class MySceneState extends State<MyScene> {
-
+  BuildContext ctx;
   List dataList;
   @override
   void initState() {
@@ -59,6 +59,7 @@ class MySceneState extends State<MyScene> {
 
   @override
   Widget build(BuildContext context) {
+    ctx = context;
     return Container(
       color: Colors.white,
       child: SafeArea(
@@ -206,6 +207,8 @@ Widget headWidget() {
                     ),
                   ), onPressed: () {
                     print('立即开通点击');
+                    Navigator.push(ctx, 
+                    MaterialPageRoute(builder: (ctx) => LoginScene()));
                   },
                 )
               ],
