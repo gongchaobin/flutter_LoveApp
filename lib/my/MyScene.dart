@@ -1,148 +1,139 @@
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class MyScene extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MySceneWidget();
-  }
-}
 
-class MySceneWidget extends StatefulWidget {
+class MyScene extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return MySceneState();
   }
 }
 
-class MySceneState extends State<MySceneWidget> {
+class MySceneState extends State<MyScene> {
+
+  List dataList;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    //数据加载
+    loadData();
+  }
+
+ void loadData() {
+   dataList = new List();
+   dataList.add({
+     "title":"我的提问",
+     "image":"images/mine/mine_question.png",
+   });
+   dataList.add({
+     "title":"我的回答",
+     "image":"images/mine/mine_answer.png",
+   });
+   dataList.add({
+     "title":"评论反馈",
+     "image":"images/mine/mine_feedback.png",
+   });
+   dataList.add({
+     "title":"使用帮助",
+     "image":"images/mine/mine_help.png",
+   });
+   dataList.add({
+     "title":"隐私政策",
+     "image":"images/mine/mine_policy.png",
+   });
+   dataList.add({
+     "title":"用户协议",
+     "image":"images/mine/mine_protocol.png",
+   });
+   dataList.add({
+     "title":"关于我们",
+     "image":"images/mine/mine_about_us.png",
+   });
+   dataList.add({
+     "title":"退出登录",
+     "image":"images/mine/mine_logout.png",
+   });
+ }
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      // height: 135,
-      padding: EdgeInsets.only(left: 15,right: 15,top: 100),
-      // color: Colors.yellow,
-      child: Column (
-        children: <Widget>[
-          headWidget(),
-          SizedBox(height: 10,),
-          vipWidget(),
-          Expanded(
-            child: listWidget(),
-          )
-        ],
-      )
+      color: Colors.white,
+      child: SafeArea(
+        child: listWidget(),
+      ),
     );
-
-    // return Scaffold(
-    //   body: Column(
-    //       children: <Widget>[
-    //         lineWidget(),
-    //         Container(
-    //           color: Colors.white,
-    //           // height: 50,
-    //           child: Row(
-    //             children: <Widget>[
-    //               Padding(
-    //                 padding: EdgeInsets.only(left: 15,top: 20,bottom: 20),
-    //                 child: Image.asset(
-    //                   'images/tab_my.png',
-    //                   width: 32,
-    //                   height: 32,
-    //                 ),
-    //               ),
-    //               Padding(
-    //                 padding: EdgeInsets.only(left: 15),
-    //                 child: FlatButton(
-    //                   color: Colors.blue,
-    //                   child: Text('登录1'),
-    //                   shape: const RoundedRectangleBorder(
-    //                     borderRadius: BorderRadius.all(Radius.circular(12))
-    //                   ), 
-    //                   onPressed: () {
-
-    //                   },
-    //                 ),
-    //               )
-    //             ],
-    //           ),
-    //         ),
-    //         lineWidget(),
-    //         Expanded(
-    //           child: ListView.builder(
-    //             itemCount: 10,
-    //             itemBuilder: (BuildContext context,int index) {
-    //               return getRow(index);
-    //             },
-    //           ),
-    //         )
-    //       ],
-    //     ),
-    // );
   }
 
 ListView listWidget() {
+  print(dataList);
   return ListView.builder(
-    itemCount: 10,
+    itemCount: this.dataList.length + 2,
     itemBuilder: (BuildContext context,int index) {
-      return getRow(index);
+      return _itemBuilder(index);
     },
   );
 }
 
+Widget _itemBuilder(int index) {
+  if(0 == index) {
+    return headWidget();
+  } else if (1 == index) {
+    return vipWidget();
+  }
+  return getRow(index - 2);
+}
+
+
 Widget headWidget() {
   return Container(
-    child: Column(
-      mainAxisSize: MainAxisSize.max,
-      crossAxisAlignment: CrossAxisAlignment.start,
+    margin: EdgeInsets.only(left: 15,right: 15,top: 10),
+    child: Row(
       children: <Widget>[
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            ClipOval(
-              child: FadeInImage.assetNetwork(
-                placeholder: "images/mine/mine_headphoto.png",
-                fit: BoxFit.contain,
-                image: "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3463668003,3398677327&fm=58",
-                width: 75,
-                height: 75,
+        ClipOval(
+          child: FadeInImage.assetNetwork(
+            placeholder: "images/mine/mine_headphoto.png",
+            fit: BoxFit.contain,
+            image: "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3463668003,3398677327&fm=58",
+            width: 75,
+            height: 75,
+          ),
+        ),
+        Padding(padding: EdgeInsets.only(left: 10),),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                '用户名啊大大大大嘎嘎阿斯顿发噶都是嘎是嘎沙雕噶电饭锅蛋糕啊大公司的反攻倒算反攻倒算风格',
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Color.fromRGBO(20, 20, 20, 1),
+                ),
               ),
-            ),
-            SizedBox(width: 8,),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
-                    '用户名啊大大大大嘎嘎阿斯顿发噶都是嘎是嘎沙雕噶电饭锅蛋糕啊大公司的反攻倒算反攻倒算风格',
+                    '账号1234567',
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                      fontSize: 16,
-                      color: Color.fromRGBO(20, 20, 20, 1),
+                      fontSize: 14,
+                      color: Color.fromRGBO(30, 30, 30, 1),
                     ),
-                    ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    mainAxisSize: MainAxisSize.max,
-                    children: <Widget>[
-                      Text(
-                        '账号1234567',
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Color.fromRGBO(30, 30, 30, 1),
-                        ),
-                      ),
-                      profileBtnWidget(),
-                    ],
-                  )
+                  ),
+
+                  profileBtnWidget(),
                 ],
-              ),
-            ) 
-          ],
-        )
+              )
+            ],
+          ),
+        ),
       ],
     ),
   );
@@ -150,7 +141,9 @@ Widget headWidget() {
 
   Widget profileBtnWidget() {
     return Container(
-      // alignment: Alignment.center,
+      width: 84,
+      height: 28,
+      alignment: Alignment.center,
       decoration: BoxDecoration(
         image: DecorationImage(
           fit: BoxFit.fitWidth,
@@ -166,99 +159,79 @@ Widget headWidget() {
             ),
         ), 
         onPressed: () {
-          print('object');
+          print('修改信点击');
         },
       )
     );
   }
 
-  Widget vipWidget(){
-    return Stack(
-      alignment: Alignment.center,
-      children: <Widget>[
-        Image.asset(
-          'images/mine/mine_vip_bg.png',
-          height: 100,
-        ),
-        Container(
-          padding: EdgeInsets.only(left: 10,right: 10),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              Image.asset(
-                'images/mine/mine_vip.png',
-                width: 28,
-                height: 28,
-              ),
-              SizedBox(width: 5,),
-              Expanded(
-                child: Text(
-                  'VIP会员',
-                  style: TextStyle(
-                    color: Color.fromRGBO(238, 190, 60, 1),
-                    fontSize: 22
+  Widget vipWidget() {
+    return Padding(
+      padding: EdgeInsets.only(left: 15,top: 10,right: 15,bottom: 15),
+      child: Stack(
+        alignment: Alignment.center,
+        children: <Widget>[
+          Image.asset(
+            'images/mine/mine_vip_bg.png',
+            height: 100,
+          ),
+          Container(
+            padding: EdgeInsets.only(left: 10,right: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                Image.asset(
+                  'images/mine/mine_vip.png',
+                  width: 28,
+                  height: 28,
+                ),
+                SizedBox(width: 5,),
+                Expanded(
+                  child: Text(
+                    'VIP会员',
+                    style: TextStyle(
+                      color: Color.fromRGBO(238, 190, 60, 1),
+                      fontSize: 22
+                    ),
                   ),
                 ),
-              ),
-              FlatButton(
-                shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-                color: Color.fromRGBO(238, 190, 60, 1),
-                child: Text(
-                  '立即开通',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 14,
-                  ),
-                ), onPressed: () {
-
-                },
-              )
-            ],
-          ),
-        )
-      ],
-    );
-  }
-
-  Widget lineWidget() {
-    return Container(
-      height: 10,
-      color: Color.fromRGBO(224, 224, 224, 1),
-    );
-  }
-
-Widget getRow(int index) {
-  return Container(
-    // height: 50,
-    // margin: EdgeInsets.only(bottom: 10),
-    child: Column(
-      children: <Widget>[
-        Row(
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(left: 15,top: 10,bottom: 10),
-              child: Image.asset(
-                'images/ic_me_follows.png',
-                width: 30,
-                height: 30,
-              ),
+                FlatButton(
+                  shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+                  color: Color.fromRGBO(238, 190, 60, 1),
+                  child: Text(
+                    '立即开通',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14,
+                    ),
+                  ), onPressed: () {
+                    print('立即开通点击');
+                  },
+                )
+              ],
             ),
-            Expanded(
-              child: Text('柱子'),
-            ),
-            Icon(
-              Icons.chevron_right,
-              color: const Color.fromARGB(255, 204, 204, 204),
-            ),
-          ],
-        ),
-        // Container(
-        //   height: 1,
-        //   color: Colors.grey,
-        // )
-      ],
-      
+          )
+        ],
       ),
+    );
+  }
+
+  Widget getRow(int index) {
+    var data = dataList[index];
+    return ListTile(
+      leading: Image.asset(
+        data["image"],
+        width: 24,
+        height: 24,
+        ),
+      title: Text(data["title"]),
+      trailing: Image.asset(
+        "images/mine/mine_join.png",
+        height: 16,
+      ),
+      onTap: (){
+        print(data['title'] + '点击');
+      },
     );
   }
 }
