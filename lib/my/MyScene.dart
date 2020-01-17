@@ -69,7 +69,6 @@ class MySceneState extends State<MyScene> {
   }
 
 ListView listWidget() {
-  print(dataList);
   return ListView.builder(
     itemCount: this.dataList.length + 2,
     itemBuilder: (BuildContext context,int index) {
@@ -119,13 +118,15 @@ Widget headWidget() {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Text(
+                  Expanded(
+                    child: Text(
                     '账号1234567',
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontSize: 14,
                       color: Color.fromRGBO(30, 30, 30, 1),
+                      ),
                     ),
                   ),
 
