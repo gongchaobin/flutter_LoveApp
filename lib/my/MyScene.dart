@@ -13,6 +13,7 @@ class MyScene extends StatefulWidget {
 class MySceneState extends State<MyScene> {
   BuildContext ctx;
   List dataList;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -93,13 +94,13 @@ Widget headWidget() {
     child: Row(
       children: <Widget>[
         ClipOval(
-          child: FadeInImage.assetNetwork(
-            placeholder: "images/mine/mine_headphoto.png",
-            fit: BoxFit.contain,
-            image: "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3463668003,3398677327&fm=58",
-            width: 75,
-            height: 75,
-          ),
+//          child: FadeInImage.assetNetwork(
+//            placeholder: "images/mine/mine_headphoto.png",
+//            fit: BoxFit.contain,
+////            image: "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3463668003,3398677327&fm=58",
+//            width: 75,
+//            height: 75,
+//          ),
         ),
         Padding(padding: EdgeInsets.only(left: 10),),
         Expanded(

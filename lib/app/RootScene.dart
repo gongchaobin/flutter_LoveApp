@@ -1,9 +1,11 @@
-import 'package:flutter/cupertino.dart';
+
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
-import 'package:love_app/app/AppColor.dart';
 import 'package:love_app/community/CommunitySence.dart';
 import 'package:love_app/found/ShowScene.dart';
 import 'package:love_app/home/HomeScene.dart';
+import 'package:love_app/model/HomeItem.dart';
 import 'package:love_app/my/MyScene.dart';
 
 class RootScene extends StatefulWidget {
@@ -23,85 +25,64 @@ class RootScene extends StatefulWidget {
 class _RootSceneState extends State<RootScene> {
 
   int tabIndex = 0;
-  bool isLoaded = false;
-
-  // 定义 tab icon
-  List<Image> _tabImages = [
-    Image.asset('images/tab_home_selected.png',width: 24,height: 24,),
-    Image.asset('images/tab_community_selected.png',width: 24,height: 24,),
-    Image.asset('images/tab_found_selected.png',width: 24,height: 24,),
-    Image.asset('images/tab_my_selected.png',width: 24,height: 24,),
-  ];
-
-  List<Image> _tabSelectedImages = [
-    Image.asset('images/tab_home.png',width: 24,height: 24,),
-    Image.asset('images/tab_community.png',width: 24,height: 24,),
-    Image.asset('images/tab_found.png',width: 24,height: 24,),
-    Image.asset('images/tab_my.png',width: 24,height: 24,),
-  ];
-
-  List<String> menus = [
-    "主页",
-    "社区",
-    "发现",
-    "我的"
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return Scaffold(
-      body: IndexedStack(
-        children: <Widget>[
-          HomeScene(), // 主页
-          CommunitySence(), // 社区
-          ShowScene(), // 发现
-          MyScene(), // 我的
-        ],
-        index: tabIndex,
-      ),
-      bottomNavigationBar:CupertinoTabBar(
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: _tabImages[0],
-            activeIcon: _tabSelectedImages[0],
-            title: Text(menus[0])
-          ),
-          BottomNavigationBarItem(
-            icon: _tabImages[1],
-            activeIcon: _tabSelectedImages[1],
-            title: Text(menus[1])
-          ),
-          BottomNavigationBarItem(
-            icon: _tabImages[2],
-            activeIcon: _tabSelectedImages[2],
-            title: Text(menus[2])
-          ),
-          BottomNavigationBarItem(
-            icon: _tabImages[3],
-            activeIcon: _tabSelectedImages[3],
-            title: Text(menus[3])
-          ),
-        ],
-        onTap: (tabIndex) {
-          setState(() {
-            this.tabIndex = tabIndex;
-          });
-        },
-        currentIndex: tabIndex,
-        backgroundColor: Colors.white,
-        activeColor: AppColor.primary,
-        border: Border(top: BorderSide.none),
-      ),
-    );
-  }
-
+  List<HomeItem> list = List();
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    
+    list.add(HomeItem("主页", "images/tab_home_selected.png", "images/tab_home.png"));
+    list.add(HomeItem("社区", "images/tab_community_selected.png", "images/tab_community.png"));
+    list.add(HomeItem("发现", "images/tab_found_selected.png", "images/tab_found.png"));
+    list.add(HomeItem("我的", "images/tab_my_selected.png", "images/tab_my.png"));
   }
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return _scaffold();
+  }
+
+  Scaffold _scaffold() {
+    return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: tabIndex,
+        fixedColor: Colors.blue,
+        selectedFontSize: 13,
+        unselectedFontSize: 12,
+        onTap: (tabIndex) {
+          setState(() {
+            this.tabIndex = tabIndex;
+          });
+        },
+        type: BottomNavigationBarType.fixed,
+        items: list.map((e) =>
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              e.icon,width: 24.0,height: 24.0,
+            ),
+            activeIcon: Image.asset(
+              e.actionIcon,width: 24.0,height: 24.0,
+            ),
+            title: Text(
+              e.title,
+            )
+          )
+        ).toList(),
+      ),
+      body: IndexedStack(
+        children: [
+          HomeScene(), // 主页
+          CommunitySence(), // 社区
+          ShowScene(), // 发现
+          MyScene(),
+        ],
+        index: tabIndex,
+      ),
+    );
+  }
+
 
 
 }

@@ -1,5 +1,4 @@
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:love_app/app/AppColor.dart';
 import 'package:love_app/app/RootScene.dart';
@@ -19,7 +18,7 @@ class AppScene extends StatelessWidget {
         dividerColor: Color(0xFFEEEEEE),
         scaffoldBackgroundColor: AppColor.paper,
         textTheme: TextTheme(
-          body1: TextStyle(color: AppColor.darkGrey)
+          headline1: TextStyle(color: AppColor.darkGrey)
         ),
       ),
 

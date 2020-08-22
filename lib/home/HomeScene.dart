@@ -18,8 +18,18 @@ class HomeSceneState extends State<HomeScene> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
+//    return Scaffold(
+//      body: HomeListView(),
+//    );
     return Scaffold(
-      body: HomeListView(),
+      body: Center(
+        child: Text(
+          "我是谁",
+          style: TextStyle(
+            fontSize: 20
+          ),
+        ),
+      ),
     );
   }
 
