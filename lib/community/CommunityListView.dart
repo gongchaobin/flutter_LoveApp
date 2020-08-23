@@ -29,12 +29,14 @@ class CommunityListViewState extends State<CommunityListView> {
     return RefreshIndicator(
       color: AppColor.primary,
       onRefresh: fetchData,
-      child: new ListView.builder(
-        itemCount: 10,
-        itemBuilder: (BuildContext context,int index) {
-          return buildItem();
-        },
-      ),
+      child: ListView.separated(itemBuilder: (BuildContext context,int index) {
+        return buildItem();
+      }, separatorBuilder: (BuildContext context,int index) {
+        return Divider(
+          height: 1,
+          color: Colors.grey,
+        );
+      }, itemCount: 10),
     );
   }
 

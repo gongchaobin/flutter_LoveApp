@@ -13,13 +13,17 @@ class CommunitySence extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      appBar: CommunityTitleBar(),
-      body: Container(
-        color: AppColor.white,
-        width: Screen.width,
-        height: Screen.height,
-        child: CommunityListView(),
+      appBar: AppBar(
+        title: Text(
+          "社区"
+        ),
+        actions: [
+          IconButton(icon: Icon(Icons.search), onPressed: () {
+
+          }),
+        ],
       ),
+      body: CommunityListView(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
 

@@ -29,7 +29,6 @@ class CommunityTitleBarState extends State<CommunityTitleBar> {
           child: Container(
             padding: EdgeInsets.only(right: 15,left: 15),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Expanded(
                   child: GestureDetector(
