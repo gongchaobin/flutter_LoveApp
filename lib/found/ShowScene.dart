@@ -11,10 +11,7 @@ class ShowScene extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           "展示面",
-          style: TextStyle(fontSize: 16),
         ),
-        centerTitle: true,
-        elevation: 0,
       ),
       body: CommunityListView(),
     );

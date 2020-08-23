@@ -13,12 +13,9 @@ class CommunityListView extends StatefulWidget {
     // TODO: implement createState
     return CommunityListViewState();
   }
-
 }
 
 class CommunityListViewState extends State<CommunityListView> {
-
-  var datas;
 
   @override
   void initState() {
@@ -29,25 +26,16 @@ class CommunityListViewState extends State<CommunityListView> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-//    if(datas == null) {
-//      return Center(
-//        child: CupertinoActivityIndicator(
-//        ),
-//      );
-//    } else{
-        return Container(
-          child: RefreshIndicator(
-            color: AppColor.primary,
-            onRefresh: fetchData,
-            child: new ListView.builder(
-              itemCount: 10,
-              itemBuilder: (BuildContext context,int index) {
-                return buildItem();
-              },
-            ),
-          ),
-        );
-//    }
+    return RefreshIndicator(
+      color: AppColor.primary,
+      onRefresh: fetchData,
+      child: new ListView.builder(
+        itemCount: 10,
+        itemBuilder: (BuildContext context,int index) {
+          return buildItem();
+        },
+      ),
+    );
   }
 
   Widget buildItem() {
@@ -58,7 +46,6 @@ class CommunityListViewState extends State<CommunityListView> {
         children: <Widget>[
           buildHead(),
           buildContent(),
-          buildDivider()
         ],
       ),
     );
@@ -71,16 +58,14 @@ class CommunityListViewState extends State<CommunityListView> {
         ClipOval(
           child: Image.asset('images/default_avatar.png',width: 56,height: 56,),
         ),
-        Padding(padding: EdgeInsets.only(left: 6)),
+        SizedBox(width: 10,),
         Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             Text(
               '用户名',
               style: TextStyle(fontSize: 16,color: Colors.black,fontWeight: FontWeight.w300),
             ),
-            Padding(padding: EdgeInsets.only(top: 3)),
+            SizedBox(height: 3,),
             Text(
               '年月日',
               style: TextStyle(fontSize: 15,color: Colors.grey),
@@ -103,10 +88,9 @@ class CommunityListViewState extends State<CommunityListView> {
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
           ),
-          Padding(padding: EdgeInsets.only(top: 5)),
+          SizedBox(height: 5,),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Text(
                 '#标签',
@@ -129,10 +113,9 @@ class CommunityListViewState extends State<CommunityListView> {
           Container(
             margin: EdgeInsets.only(top: 5),
             padding: EdgeInsets.all(10),
-            width: double.infinity,
             decoration: BoxDecoration(
               color: Colors.grey,
-              borderRadius: BorderRadius.circular(3),
+              borderRadius: BorderRadius.circular(5),
             ),
             child: Text(
               '文案文案文案问啊安稳安稳安安康康文案文案文案问啊安稳安稳安安康康文案'
@@ -147,16 +130,6 @@ class CommunityListViewState extends State<CommunityListView> {
       ),
     );
   }
-
-  Widget buildDivider() {
-    return Container(
-      height: 20,
-      width: double.infinity,
-      color: Colors.grey,
-    );
-  }
-
-
 
   Future<void> fetchData() {
 
